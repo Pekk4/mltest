@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  name: wine-train-placholder
+  namespace: default
+spec:
+  workflowTemplateRef:
+    name: wine-train-template
+
+  arguments:
+    parameters:
+      - name: image
+        value: ghcr.io/pekk4/mltest-model:latest
+      - name: tracking_uri
+        value: http://mlflow.mlflow.svc.cluster.local
+      - name: s3_endpoint
+        value: http://minio.minio.svc.cluster.local:9000

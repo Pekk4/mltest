@@ -32,3 +32,26 @@ jobs:
         run: |
           IMAGE=ghcr.io/${{ env.REPO }}-model:${{ github.sha }}
           docker build -t $IMAGE -t ghcr.io/${{ env.REPO }}-model:latest --push .
+
+      - name: Install yq
+        run: sudo apt-get install -y yq
+
+      - name: Update Workflow declaration
+        run: |
+          yq -y -i ".metadata.name = \"wine-train-${{ github.sha }}\"" workflow.yaml
+          yq -y -i '
+            (.spec.arguments.parameters[] | select(.name == "image")).value =
+            "ghcr.io/${{ env.REPO }}-model:${{ github.sha }}"
+          ' workflow.yaml
+
+      - name: Set Git identity
+        run: |
+          git config user.name "Voldemort"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Commit and push to staging
+        if: github.ref == 'refs/heads/master'
+        run: |
+          git add workflow.yaml
+          git commit -m "Update container image to ${{ github.sha }}" || echo "No changes to commit"
+          git push
