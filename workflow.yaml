@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
-  name: wine-train-e7365780755f1873f81392f13d4493d910b3333f
+  name: wine-train-a9171cf0b5daf3b143f81836af290869f0464306
   namespace: argo
 spec:
   workflowTemplateRef:
@@ -9,7 +9,7 @@ spec:
   arguments:
     parameters:
       - name: image
-        value: ghcr.io/pekk4/mltest-model:e7365780755f1873f81392f13d4493d910b3333f
+        value: ghcr.io/pekk4/mltest-model:a9171cf0b5daf3b143f81836af290869f0464306
       - name: tracking_uri
         value: http://mlflow.mlflow.svc.cluster.local
       - name: s3_endpoint
