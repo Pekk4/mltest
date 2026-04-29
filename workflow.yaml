@@ -3,6 +3,9 @@ kind: Workflow
 metadata:
   name: wine-train-7fe1385d0ec18d29a2ec2cf64e2f6779bc0a6f68
   namespace: argo
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   workflowTemplateRef:
     name: wine-train-template
