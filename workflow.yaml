@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
   name: wine-train-e7365780755f1873f81392f13d4493d910b3333f
-  namespace: default
+  namespace: argo
 spec:
   workflowTemplateRef:
     name: wine-train-template
