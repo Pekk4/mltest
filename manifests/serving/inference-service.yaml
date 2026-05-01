@@ -2,11 +2,11 @@ apiVersion: "serving.kserve.io/v1beta1"
 kind: "InferenceService"
 metadata:
   name: "wine"
-  annotations: 
-     # Keep these as they help construct the URL
-     serving.kserve.io/s3-endpoint: minio.minio.svc.cluster.local:9000
-     serving.kserve.io/s3-usehttps: "0"
-     serving.kserve.io/s3-region: us-east-1
+  annotations:
+    # Keep these as they help construct the URL
+    serving.kserve.io/s3-endpoint: minio.minio.svc.cluster.local:9000
+    serving.kserve.io/s3-usehttps: "0"
+    serving.kserve.io/s3-region: us-east-1
 spec:
   predictor:
     serviceAccountName: kserve-sa
@@ -14,4 +14,4 @@ spec:
       modelFormat:
         name: mlflow
       protocolVersion: v2
-      storageUri: "s3://mlflow/0/models/m-5a4ebddb4077455890225204103183b7/artifacts"
+      storageUri: "s3://mlflow/0/models/m-d0607f9b9aa14ddb92d5b35452cb2d04/artifacts"
