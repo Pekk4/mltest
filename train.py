@@ -13,7 +13,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 # Start MLflow run
-with mlflow.start_run():
+with mlflow.start_run() as run:
     # Define model
     model = RandomForestClassifier(
         n_estimators=50,
@@ -34,6 +34,12 @@ with mlflow.start_run():
     mlflow.log_metric("accuracy", acc)
 
     # Log model
-    mlflow.sklearn.log_model(model, "model")
+    model_info = mlflow.sklearn.log_model(model, "model")
+    model_id = model_info.model_id
+    experiment_id = run.info.experiment_id
+    model_uri = f"s3://mlflow/{experiment_id}/models/{model_id}/artifacts"
+
+    with open("/tmp/model_uri.txt", "w") as f:
+        f.write(model_uri)
 
 print("Training complete.")
