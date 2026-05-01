@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
-  name: wine-train-ea75647bdea0830add274fdc66675b9bf1c76f36
+  name: wine-train-17b57b042ccb922e495b65cad82cb3543f988b3b
   namespace: argo
   annotations:
     argocd.argoproj.io/hook: PostSync
@@ -12,7 +12,7 @@ spec:
   arguments:
     parameters:
       - name: image
-        value: ghcr.io/pekk4/mltest-model:ea75647bdea0830add274fdc66675b9bf1c76f36
+        value: ghcr.io/pekk4/mltest-model:17b57b042ccb922e495b65cad82cb3543f988b3b
       - name: tracking_uri
         value: http://mlflow.mlflow.svc.cluster.local
       - name: s3_endpoint
