@@ -38,11 +38,11 @@ jobs:
 
       - name: Update Workflow declaration
         run: |
-          yq -y -i ".metadata.name = \"wine-train-${{ github.sha }}\"" workflow.yaml
+          yq -y -i ".metadata.name = \"wine-train-${{ github.sha }}\"" manifests/training/workflow.yaml
           yq -y -i '
             (.spec.arguments.parameters[] | select(.name == "image")).value =
             "ghcr.io/${{ env.REPO }}-model:${{ github.sha }}"
-          ' workflow.yaml
+          ' manifests/training/workflow.yaml
 
       - name: Set Git identity
         run: |
