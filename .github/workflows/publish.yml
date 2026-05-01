@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+    paths-ignore:
+      - manifests/**
+      - .github/**
   workflow_dispatch:
 
 jobs:
