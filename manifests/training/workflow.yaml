@@ -1,19 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
-  name: wine-train-ba5bdd5e8196224dee221b34a367505c01ae0f8d
+  generateName: wine-train-
   namespace: argo
-  annotations:
-    argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   workflowTemplateRef:
-    name: wine-train-template
+    name: train-template
+
   arguments:
     parameters:
-      - name: image
-        value: ghcr.io/pekk4/mltest-model:ba5bdd5e8196224dee221b34a367505c01ae0f8d
+      - name: training_image
+        value: ghcr.io/pekk4/mltest-model:latest
+
+      - name: update_manifests_image
+        value: ghcr.io/pekk4/argo-git-tools:latest
+
+      - name: repo_url
+        value: https://github.com/pekk4/mltest.git
+
       - name: tracking_uri
         value: http://mlflow.mlflow.svc.cluster.local
+
       - name: s3_endpoint
         value: http://minio.minio.svc.cluster.local:9000
