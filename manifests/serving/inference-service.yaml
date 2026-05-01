@@ -14,4 +14,4 @@ spec:
       modelFormat:
         name: mlflow
       protocolVersion: v2
-      storageUri: "s3://mlflow/0/models/m-b28b27237b0a4c3d9d8a5fcf21e0bb9c/artifacts"
+      storageUri: "s3://mlflow/0/models/m-2c9bf5a312524e889f9ab013e80ec303/artifacts"
