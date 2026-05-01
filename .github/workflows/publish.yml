@@ -52,6 +52,6 @@ jobs:
       - name: Commit and push to staging
         if: github.ref == 'refs/heads/master'
         run: |
-          git add workflow.yaml
+          git add manifests/training/workflow.yaml
           git commit -m "Update container image to ${{ github.sha }}" || echo "No changes to commit"
           git push
