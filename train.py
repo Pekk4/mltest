@@ -39,7 +39,7 @@ with mlflow.start_run() as run:
     experiment_id = run.info.experiment_id
     model_uri = f"s3://mlflow/{experiment_id}/models/{model_id}/artifacts"
 
-    with open("/tmp/model_uri.txt", "w") as f:
+    with open("/tmp/model-uri.txt", "w") as f:
         f.write(model_uri)
 
 print("Training complete.")
