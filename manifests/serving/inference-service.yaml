@@ -2,7 +2,12 @@ apiVersion: "serving.kserve.io/v1beta1"
 kind: "InferenceService"
 metadata:
   name: "wine"
-  annotations:
+  namespace: argo
+  annotations: 
+    #serving.kserve.io/enable-prometheus-scraping: "true"
+    prometheus.io/scrape: "true"
+    prometheus.io/path: "/metrics"
+    prometheus.io/port: "8082"
     # Keep these as they help construct the URL
     serving.kserve.io/s3-endpoint: minio.minio.svc.cluster.local:9000
     serving.kserve.io/s3-usehttps: "0"
