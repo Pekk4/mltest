@@ -34,7 +34,7 @@ with mlflow.start_run() as run:
     mlflow.log_metric("accuracy", acc)
 
     # Log model
-    model_info = mlflow.sklearn.log_model(model, "model")
+    model_info = mlflow.sklearn.log_model(model, "wine-model")
     model_id = model_info.model_id
     experiment_id = run.info.experiment_id
     model_uri = f"s3://mlflow/{experiment_id}/models/{model_id}/artifacts"
