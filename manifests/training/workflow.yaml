@@ -3,7 +3,7 @@ kind: Workflow
 metadata:
   generateName: wine-train-
   namespace: argo
-  name: wine-train-97dbc8bdf6dea82ac79f0e5d733269939cc3ff28
+  name: wine-train-5797009e9d92085c03171bad6fdbb33b9caf9db3
 spec:
   workflowTemplateRef:
     name: train-template
