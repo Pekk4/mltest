@@ -2,7 +2,8 @@ apiVersion: "serving.kserve.io/v1beta1"
 kind: "InferenceService"
 metadata:
   name: "wine"
-  namespace: argo
+  #namespace: argo
+  namespace: default
   annotations:
     #serving.kserve.io/enable-prometheus-scraping: "true"
     prometheus.io/scrape: "true"
